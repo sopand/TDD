@@ -14,7 +14,6 @@
 
     <logger name="jdbc" level="OFF"/>
 
-    <logger name="com.tdd" level="DEBUG" appender-ref="console" />
     <logger name="jdbc.sqlonly" level="OFF"/>
     <!--SQL을 로그로 남기며, Prepared Statement와 관련된 파라미터는 자동으로 변경되어 SQL을 출력한다.-->
     <logger name="jdbc.sqltiming" level="DEBUG"/>
