@@ -23,6 +23,7 @@ public class MemberRepositoryTest {
     private MemberRepository repository;
 
     //@BeforeAll //테스트 시작전 한번만 실행
+    /*
     @BeforeEach // 각 테스트 시작전 한번씩 실행
     public void 데이터(){
         Member member = Member.builder()
@@ -31,7 +32,7 @@ public class MemberRepositoryTest {
                 .build();
         repository.save(member).getId();
 
-    }
+    }*/
     @Test
     public void save() {
         //given ( 데이터 준비 )
@@ -48,26 +49,31 @@ public class MemberRepositoryTest {
 
     @Test
     public void findMember(){
+        //given
         String email="a";
         String pwd="a";
+        //when
         Member entity=repository.findById(1L).get();
-
+        //then
         assertThat(entity.getEmail()).isEqualTo(email);
         assertThat(entity.getPwd()).isEqualTo(pwd);
     }
     @Test
     public void deleteMember(){
-        repository.deleteById(1L);
+        //given
+        Long id=1L;
+        //when
+        repository.deleteById(id);
+        //then
         assertThat(repository.findById(1L)).isEmpty();
     }
-
     @Test
     public void modifyMember(){
-        Member m=Member.builder().email("b").pwd("b").id(1L).build();
-        repository.save(m);
-        List<MemberResponse> memberList=repository.findAll().stream().map(MemberResponse::new).toList();
-        memberList.stream().forEach(member-> System.out.println("a3d32dc32d32dc232"+member));
-
+        Member m=Member.builder().email("b").pwd("b").id(1L).build ();
+        Member member=repository.save(m);
+        assertThat(m.getEmail()).isEqualTo(member.getEmail());
+        assertThat(m.getPwd()).isEqualTo(member.getPwd());
+        assertThat(m.getId()).isEqualTo(member.getId());
 
     }
 

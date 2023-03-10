@@ -1,11 +1,13 @@
 package com.tdd.dto;
 
 import com.tdd.entity.Member;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class MemberRequest {
     private String email;
     private String pwd;
